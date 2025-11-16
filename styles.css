@@ -1,0 +1,230 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #F5F5F5;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.modal-card {
+  box-sizing: border-box;
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px 0px;
+  width: 370px;
+  height: 326px;
+  background: #FFFFFF;
+  /* list-item/gray-active
+  Active menu items and lists items. Also cards backgrounds
+  */
+  border: 1px solid #EEEEEE;
+  box-shadow: 0px 0px 4px rgba(20, 20, 20, 0.1), 0px 8px 15px rgba(20, 20, 20, 0.12);
+  border-radius: 6px;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  padding: 0;
+}
+
+.modal-item {
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 15px 8px 22px;
+  gap: 5px;
+  width: 100%;
+  height: 42px;
+  /* white */
+  background: #FFFFFF;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.modal-text {
+  font-size: 14px;
+  color: #333333;
+  flex: 1;
+}
+
+.separator {
+  height: 1px;
+  background-color: #E5E5E5;
+  margin: 4px 0;
+}
+
+.checkbox-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkbox-custom {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  background: #FFFFFF;
+  border-radius: 6px;
+  border: 1px solid #CCCCCC;
+  display: inline-block;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.checkbox-custom::after {
+  content: '';
+  position: absolute;
+  display: none;
+  left: 8px;
+  top: 4px;
+  width: 6px;
+  height: 12px;
+  border: solid;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-input:checked + .checkbox-custom {
+  background-color: #3B82F6;
+  border-color: #3B82F6;
+}
+
+.checkbox-input:checked + .checkbox-custom::after {
+  display: block;
+  border-color: #FFFFFF;
+  top: 3px;
+}
+
+.done-button {
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 10px;
+  width: 340px;
+  height: 40px;
+  /* Website color/Orange */
+  background: #FFCE22;
+  border-radius: 4px;
+  border: none;
+  color: #333333;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  margin: 8px 20px 0 20px;
+  align-self: stretch;
+}
+
+.done-button:hover {
+  opacity: 0.9;
+}
+
+.done-button:active {
+  opacity: 0.8;
+}
+
+/* Toast Notification */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background-color: #333333;
+  color: #FFFFFF;
+  padding: 14px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 1000;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  min-width: 280px;
+  max-width: 90%;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.toast-icon {
+  background-color: #4CAF50;
+  color: #FFFFFF;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.toast-message {
+  font-size: 14px;
+  font-weight: 500;
+  flex: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  body {
+    padding: 20px;
+  }
+  
+  .modal-card {
+    width: 100%;
+    max-width: 370px;
+  }
+
+  .done-button {
+    width: calc(100% - 40px);
+    max-width: 340px;
+  }
+
+  .toast {
+    min-width: 90%;
+    left: 5%;
+    transform: translateX(0) translateY(100px);
+  }
+
+  .toast.show {
+    transform: translateX(0) translateY(0);
+  }
+}
